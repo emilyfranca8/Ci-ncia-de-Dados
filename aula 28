@@ -1,1 +1,33 @@
+import math
 
+# Parâmetros para o cálculo
+nivel_confianca = 0.95
+z = 1.96 # valor z para 95% de confiança
+p = 0.5 # proporção esperada
+e = 0.05 # margem de errro
+
+# Cálculo do tamanho da amostra para população infinita
+n = (z**2 * p * (1 - p)) / (e**2)
+n = math.ceil(n) # arredondar para cima
+print(f"Tamanho da amostra para população infinita: {n}")
+
+# Ajuste para população finita
+N = 500 # Tamanho total da população
+n_f = n / (1 + (n - 1) / N)
+n_f = math.ceil(n_f) # arredondar pra cima
+print(f"Tamanho da amostra ajustado para população finita: {n_f}")
+
+# Visualização dos resultados
+import matplotlib.pyplot as plt
+
+# Dados de exemplo: resultados de uma pesquisa (amostra)
+resultados = [4, 5, 3, 4, 4, , 5, 2, 3, 4, 5, 4, 4, 3, 4, 5, 2, 3, 4, 4, 5, 3, 4, 4, 5, 2, 3, 4, 5, 3, 4]
+media_amostral = sum(resultados) / len(resultados)
+
+# Plotar histograma dos resultados
+plt.hist(resultados, bins=5, edgecolor='black')
+plt.axvline(media_amostral, color='red', linestyle= 'dashed', linewidth=1)
+plt.title('Distribuição dos Resultados da Pesquisa')
+plt.xlabel('Pontuação')
+plt.ylabel('Frequência')
+plt.show()
