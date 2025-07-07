@@ -1,0 +1,25 @@
+import pandas as pd 
+import seaborn as sns
+import matplotlib.pyplot as plt 
+import numpy as np 
+
+# Criação de um dataset fictício
+np.random.seed(42) 
+dados = pd.DataFrame({
+    'Orcamento_Campanha': np.random.randint(1000, 50000, size=100),
+    'Visualizacoes_Anuncio': np.random.randint(5000, 200000, size=100),
+    'Vendas': np.random.randint(10, 1000, size=100),
+    'Cliques': np.random.randint(200, 20000, size=100)
+})
+
+# Pairplot: visualizar todas as relações 
+sns.pairplot(dados)
+plt.show()
+
+# Jointplot: explorar a relação entre duas variáveis específicas
+sns.jointplot(x='Orcamento_Campanha', y='Vendas', data=dados, kind='reg')
+plt.show()
+
+# Lmplot: visualizar a linha de regressão
+sns.lmplot(x='Visualizadores_Anuncio', y='Vendas', data=dados)
+plt.show()
