@@ -1,0 +1,23 @@
+import pandas as pd 
+import seaborn as sns 
+import matplotlib.pyplot as plt
+import numpy as np 
+
+# Criação de um dataset fictício
+np.random.seed(42)
+dados = pd.DataFrame({
+    'Idade': np.random.randint(18, 65, size=100),
+    'Salario': np.random.randint(20000, 120000, size=100),
+    'Anos_de_Experiencia': np.random.randint(1, 40, size=100),
+    'Departamento': np.random.choice(['Vendas', 'TI', 'RH', 'Marketing'], size=100),
+    'Satisfacao': np.random.uniform(1, 10, size=100)
+})
+
+# Exibir as primeiras linhas do dataset
+print(dados.head())
+
+# Criar Box Plots para a variável Satisfação por Departamento
+plt.figura(figsize=(10, 6))
+sns.boxplot(x='Departamento', y='Satisfacao', data=dados)
+plt.title('box Plot da Satisfação por Departamento')
+plt.show()
