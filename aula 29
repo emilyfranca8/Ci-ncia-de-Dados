@@ -1,0 +1,14 @@
+import pandas as pd 
+
+# Carregar dados
+
+data = pd.read_csv('dados-criminalidade.csv')
+
+# Limpar dados
+data_dropna(inplace=True)
+
+# Analisar dados
+crimes_por_bairro = data['bairro'].value_counts()
+
+# Exibir resultados
+print(crimes_por_bairro)
